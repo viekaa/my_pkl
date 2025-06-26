@@ -1,11 +1,13 @@
 <?php
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\OrderController as OrdersController;
 use App\Http\Controllers\Backend\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrderController;
 use App\Http\Middleware\Admin;
 
@@ -67,23 +69,32 @@ Route::get('siswa/{id}/edit',[MyController::class, 'edit']);
 Route::put('siswa/{id}', [MyController::class, 'update']);
 //hapus
 Route::delete('siswa/{id}', [MyController::class, 'destroy']);
-Auth::routes();
 
+
+// review
+Route::post('/product/{product}/review',[ReviewController::class, 'store'])
+->middleware('auth')->name('review.store');
+
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// import
+
 
 // Route untuk admin
 Route::group(['prefix'=>'admin','middleware'=>['auth',Admin::class]], function(){
     Route::get('/',[BackendController::class,'index']);
 });
 
-// ROUTE UNTUK ADMIN
-// ATAU BACKEND
+// route untuk admin atau backend
 Route::group(['prefix'=>'admin', 'as' => 'backend.','middleware'=>['auth', Admin::class]], function() {
     Route::get('/', [BackendController::class, 'index']);
+    // crud
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
+    Route::resource('/orders', OrdersController::class);
+    Route::put('/orders/{id}/status',[OrdersController::class, 'updateStatus'])
+    ->name('orders.updateStatus');
+
 });
 
 // route Member 
