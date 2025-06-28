@@ -32,14 +32,14 @@
                                             <td>{{ $data->name }}</td>
                                             <td>{{ $data->slug }}</td>
                                             <td>
-                                                <a href="{{ route('backend.category.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                                <form action="{{ route('backend.category.destroy', $data->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin hapus data ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                Delete
-                                                </button>
-                                                </form> </td>
+                                                <a href="{{ route('backend.category.edit', $data->id) }}" class="btn btn-sm btn-warning">
+                                                    Edit
+                                                </a>
+                                                <a href="{{ route('backend.category.destroy',$data->id) }}"class="btn btn-sm btn-danger" 
+                                                    data-confirm-delete="true">
+                                                    Delete
+                                                </a>
+                                                </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

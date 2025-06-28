@@ -125,3 +125,4 @@ Route::get('/orders{id}',[OrderController::class,'show'])->name('orders.show');
 
 
 
+// routes/web.php

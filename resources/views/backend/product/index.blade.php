@@ -43,14 +43,10 @@
                                                 <a href="{{ route('backend.product.edit', $data->id) }}" class="btn btn-sm btn-warning">
                                                     Edit
                                                 </a> |
-                                               <form action="{{ route('backend.product.destroy', $data->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin hapus data ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                <a href="{{ route('backend.product.destroy',$data->id) }}"
+                                                class="btn btn-sm btn-danger" data-confirm-delete="true">
                                                 Delete
-                                                </button>
-                                                </form>
-
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

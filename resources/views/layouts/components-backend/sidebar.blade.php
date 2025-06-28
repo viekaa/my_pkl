@@ -1,3 +1,4 @@
+
 <aside class="left-sidebar with-vertical">
       <div><!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
@@ -24,6 +25,7 @@
             <!-- ---------------------------------- -->
             <!-- Dashboard -->
             <!-- ---------------------------------- -->
+           
             <li class="sidebar-item">
               <a class="sidebar-link" href="/admin/category" aria-expanded="false">
                 <span>
@@ -38,6 +40,15 @@
                   <i class="ti ti-shopping-cart"></i>
                 </span>
                 <span class="hide-menu">Product</span>
+              </a>
+            </li>
+
+             <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/orders" aria-expanded="false">
+                <span>
+                  <i class="ti ti-shopping-cart"></i>
+                </span>
+                <span class="hide-menu">Order</span>
               </a>
             </li>
           </ul>
